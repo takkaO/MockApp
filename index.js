@@ -36,6 +36,13 @@ const MyView = {
 		},
 		test() {
 			console.log(this.selectedValue);
+		},
+		menu_openDB() {
+			console.log("Open Database");
+			window.open();
+		},
+		menu_openTemplate() {
+			console.log("Open Template");
 		}
 	  }
 }

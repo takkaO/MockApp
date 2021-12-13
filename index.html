@@ -1,66 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Mock-up Application</title>
 
-    <!-- ユーザCSSの読み込み -->
-    <link rel="stylesheet" type="text/css" href="./css/index.css" />
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <title>MockApp</title>
 
-    <!-- コンテンツ・セキュリティ・ポリシーを設定
+  <!-- ユーザCSSの読み込み -->
+  <link rel="stylesheet" type="text/css" href="./css/index.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+
+  <!-- コンテンツ・セキュリティ・ポリシーを設定
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; img-src 'self' data: image/svg+xml;">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
 	   -->
-  </head>
+</head>
 
-  <body>
+<body>
+  <div id="MyView">
     <nav class="navbar navbar-light" style="background-color: #e3f2fd">
       <div class="container-fluid">
-        <a class="navbar-brand">Mock-up Application</a>
+        <a class="navbar-brand">MockApp</a>
         <form class="d-flex">
           <label class="input-group-text" for="inputGroupSelect01">使用装置名：</label>
-          <select
-            class="form-select"
-            id="inputGroupSelect01"
-          >
+          <select class="form-select" id="inputGroupSelect01">
             <option value="0" selected>装置１</option>
             <option value="1">装置２ほげほげ</option>
             </option>
           </select>
-          <input type="image" class="template-icon" alt="test" src=https://img.icons8.com/material-outlined/24/000000/file-configuration.png>
-          <button type="button" class="btn btn-default"><img class="template-icon" src="https://img.icons8.com/material-outlined/24/000000/file-configuration.png"/></button>
-          <button type="button" class="btn btn-default"><img class="db-icon" src="https://img.icons8.com/ios/50/000000/database.png"/></span></i></button>
+          <button v-on:click="menu_openTemplate()" type="button" class="btn btn-default">
+            <img class="myicon" src="./img/4157.png">
+          </button>
+          <button v-on:click="menu_openDB()" type="button" class="btn btn-default">
+            <img class="myicon" src="./img/6520.png">
+          </button>
         </form>
       </div>
     </nav>
 
-    <div id="MyView">
+    <div id="main">
       <div v-for="item in structure">
         <div v-if="item.type=='text'" class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">{{item.name}}</span>
-          <input
-            type="text"
-            class="form-control"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-          />
+          <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" />
         </div>
         <div v-if="item.type=='pulldown'" class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >Options</label
-          >
-          <select
-            v-model="selectedValue"
-            class="form-select"
-            id="inputGroupSelect01"
-          >
+          <label class="input-group-text" for="inputGroupSelect01">Options</label>
+          <select v-model="selectedValue" class="form-select" id="inputGroupSelect01">
             <option v-for="opt in item.selection" v-bind:value="opt.value">
               {{opt.display}}
             </option>
@@ -68,12 +55,19 @@
         </div>
       </div>
 
-      <button v-on:click="test()" type="button" class="btn btn-secondary">
-        Debug
-      </button>
     </div>
 
-    <script defer src="index.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
-  </body>
+    <button v-on:click="test()" type="button" class="btn btn-primary">
+      Save
+    </button>
+
+    <button v-on:click="test()" type="button" class="btn btn-secondary">
+      Debug
+    </button>
+  </div>
+
+  <script defer src="index.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+</body>
+
 </html>
