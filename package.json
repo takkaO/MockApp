@@ -1,0 +1,54 @@
+{
+  "name": "mockup_application",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron.cmd .",
+    "rebuild": "electron-rebuild",
+    "release": "electron-builder"
+  },
+  "author": "takkaO",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^16.0.2",
+    "electron-builder": "^22.10.5",
+    "electron-rebuild": "^3.2.5"
+  },
+  "build": {
+    "appId": "com.electron._your_app_name_",
+    "productName": "_your_app_name_",
+    "directories": {
+      "output": "dist"
+    },
+    "asar": "true",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "index.js",
+      "css/*",
+      "src/*",
+      "package.json",
+      "package-lock.json"
+    ],
+    "extraFiles": [
+      
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
