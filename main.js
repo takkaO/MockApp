@@ -1,7 +1,8 @@
 "use strict";
 
-const { app, BrowserWindow, ipcMain } = require("electron");
-const path = require("path")
+const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const path = require("path");
+const fs = require('fs');
 var mainWindow = null;
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 
@@ -54,13 +55,8 @@ app.on('activate', function () {
 /************************************************************
  * IPC API
  ***********************************************************/
-ipcMain.handle("test", async (event, val1, val2) => {
-	console.log("ipc-api1");
-	return add(val1, val2);
-});
-
-ipcMain.on("ipc-api2", () => {
-	console.log("ipc-api2 (not recommend)");
+ipcMain.handle("loadEquipmentList", async (event) => {
+	return ["装置１", "装置２","装置３"]
 });
 
 /************************************************************

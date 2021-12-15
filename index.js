@@ -27,15 +27,30 @@ const MyView = {
 					type: "text"
 				},
 			],
-			selectedValue: ""
+			selectedValue: "",
+			equipmentList: [],
+			selectedEquipment: ""
+		}
+	},
+	mounted: async function (){
+		this.equipmentList = await window.api.loadEquipmentList();
+		if (this.equipmentList.length > 0) {
+			this.selectedEquipment = this.equipmentList[0];
 		}
 	},
 	methods: {
 		log(item) {
 		  console.log(item)
 		},
-		test() {
+		changeEquipment() {
+			console.log(this.selectedEquipment);
+		},
+		async test() {
+			const result = await window.api.loadEquipmentList();
+			this.equipmentList = result;
+			this.equipmentList.splice();
 			console.log(this.selectedValue);
+			console.log(this.equipmentList);
 		},
 		menu_openDB() {
 			console.log("Open Database");
@@ -48,9 +63,3 @@ const MyView = {
 }
 
 Vue.createApp(MyView).mount("#MyView")
-
-
-window.addEventListener("load", function () {
-	window.api.testApi();
-	window.api.testApi2();
-});

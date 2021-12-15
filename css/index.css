@@ -3,6 +3,10 @@
 	width: 25px;
 }
 
+.select-equipment-form {
+	min-width: 150px;
+}
+
 #main {
 	margin: 20px;
 }
