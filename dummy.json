@@ -1,0 +1,58 @@
+{
+  "装置１": {
+    "structure": [
+      {
+        "name": "入力項目１",
+        "type": "input"
+      },
+      {
+        "name": "選択項目１",
+        "type": "pulldown",
+        "selection": [
+          {
+            "value": "選択肢１"
+          },
+          {
+            "value": "選択肢２"
+          }
+        ]
+      },
+	  {
+        "name": "入力項目２",
+        "type": "input"
+      },
+      {
+        "name": "入力項目３",
+        "type": "textarea"
+      }
+    ]
+  },
+  "装置２": {
+    "structure": [
+      {
+        "name": "選択項目１",
+        "type": "pulldown",
+        "selection": [
+          {
+            "value": "選択肢１"
+          },
+          {
+            "value": "選択肢２"
+          }
+        ]
+      },
+      {
+        "name": "選択項目２",
+        "type": "pulldown",
+        "selection": [
+          {
+            "value": "選択肢３"
+          },
+          {
+            "value": "選択肢４"
+          }
+        ]
+      }
+    ]
+  }
+}

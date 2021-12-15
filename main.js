@@ -13,13 +13,13 @@ function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
-		webPreferences: { 
+		webPreferences: {
 			// In Electron 12, the default will be changed to true.
 			worldSafeExecuteJavaScript: true,
 			// XSS対策としてnodeモジュールをレンダラープロセスで使えなくする
 			nodeIntegration: false,
 			// レンダとメインのglobal（window）を分離するか否か
-			contextIsolation: true,  
+			contextIsolation: true,
 			preload: path.resolve(app.getAppPath() + "/preload.js"),
 		}
 	});
@@ -28,7 +28,7 @@ function createWindow() {
 	mainWindow.loadFile("index.html");
 	// Dev tool を自動起動
 	mainWindow.webContents.openDevTools();
-	
+
 	mainWindow.on('closed', function () {
 		mainWindow = null;
 	});
@@ -56,7 +56,9 @@ app.on('activate', function () {
  * IPC API
  ***********************************************************/
 ipcMain.handle("loadEquipmentList", async (event) => {
-	return ["装置１", "装置２","装置３"]
+	const text = fs.readFileSync("dummy.json", 'utf8');
+	const json_arr = JSON.parse(text);
+	return json_arr;
 });
 
 /************************************************************
