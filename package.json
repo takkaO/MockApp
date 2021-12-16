@@ -17,8 +17,8 @@
     "electron-rebuild": "^3.2.5"
   },
   "build": {
-    "appId": "com.electron._your_app_name_",
-    "productName": "_your_app_name_",
+    "appId": "com.electron.MockApp",
+    "productName": "MockApp",
     "directories": {
       "output": "dist"
     },
@@ -30,10 +30,14 @@
       "index.js",
       "css/*",
       "src/*",
+      "img/*",
+      "template/*",
       "package.json",
       "package-lock.json"
     ],
-    "extraFiles": [],
+    "extraFiles": [
+      "test/*"
+    ],
     "win": {
       "target": [
         "nsis"
