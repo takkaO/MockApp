@@ -24,9 +24,17 @@ new Vue({
 			console.log(item)
 		},
 		async search() {
-			console.log(this.selectedEquipment);
+			let fields = [];
+			if (this.selectedSearchField === "_ALL_") {
+				for (var i in this.columns) {
+					fields.push(this.columns[i].field);
+				}
+			}
+			else {
+				fields.push(this.selectedSearchField);
+			}
 
-			this.rows = await window.api.searchDataFromDB(this.selectedEquipment, this.selectedSearchField, this.searchQuery);
+			this.rows = await window.api.searchDataFromDB(this.selectedEquipment, fields, this.searchQuery);
 			if (this.rows.length > 0) {
 				this.columns = [];
 				const keys = Object.keys(this.rows[0]);

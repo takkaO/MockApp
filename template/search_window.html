@@ -58,11 +58,13 @@
 
             <div class="mw-100">
               <input
+                @keypress.enter="search"
                 v-model="searchQuery"
                 type="text"
                 class="form-control"
                 aria-label="Text input with segmented dropdown button"
               />
+              <input type="text" style="display: none;"/> <!-- onsubmit 無効化用 -->
             </div>
             <button v-on:click="search" class="btn btn-primary" type="button">
               検索

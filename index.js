@@ -28,7 +28,7 @@ new Vue({
 			console.log(this.equipmentList);
 		},
 		save() {
-			swal("未実装", "まだ実装されていない機能です🙄", "warning");
+			swal("今の入力値をDBに保存する予定", "まだ実装されていない機能です🙄", "warning");
 		},
 		menu_openDB() {
 			console.log("Open Database");

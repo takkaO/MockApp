@@ -109,14 +109,15 @@ ipcMain.handle("searchDataFromDB", async (event, table, field, query) => {
 	let result = [];
 	let q = "SELECT * FROM `" + table + "` ";
 	if (query !== "") {
-		if (field != "_ALL_") {
-			q += "WHERE `" + field + "` like `%" + query + "`%"
-		}
-		else {
-			// リストでもらうか
+		if (field.length > 0) {
+			q += "WHERE "
+			for (var i in field) {
+				q += "`" + field[i] + "` like '%" + query + "%' OR "
+			}
+			q = q.substring(0, q.length - 3);
 		}
 	}
-	console.log(q)
+	//console.log(q)
 	await new Promise(resolve => {
 		db.all(q, (err, rows) => {
 			if (!err) {
