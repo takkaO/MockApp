@@ -8,17 +8,18 @@ contextBridge.exposeInMainWorld("api",
 		var ret = ipcRenderer.invoke("loadEquipmentList")
 		return ret;
 	},
-	testApi: () => ipcRenderer.invoke("test", 1, 99)
-		.then((result) => {
-			console.log("IPC api1 OK. add -> " + result)
-		})
-		.catch((err) => {
-			console.log(err)
-		}),
-	
-	testApi2: () => ipcRenderer.send("ipc-api2"),
-}
-);
+	openSearchDataBaseWindow: () => {
+		ipcRenderer.invoke("openSearchDB");
+	},
+	getEquipmentList: () => {
+		var ret = ipcRenderer.invoke("getEquipmentList")
+		return ret;
+	},
+	searchDataFromDB: (table, field, query) => {
+		var ret = ipcRenderer.invoke("searchDataFromDB", table, field, query);
+		return ret;
+	}
+});
 
 window.addEventListener('DOMContentLoaded', () => {
 	const replaceText = (selector, text) => {

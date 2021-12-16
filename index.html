@@ -57,11 +57,8 @@
         </div>
       </nav>
 
-      <div id="main">
-        <div
-          v-if=" Object.keys(this.equipmentList).length > 0"
-          v-for="(item, key) in equipmentList[selectedEquipment].structure"
-        >
+      <div id="main" v-if=" Object.keys(this.equipmentList).length > 0">
+        <div v-for="(item, key) in equipmentList[selectedEquipment].structure">
           <!-- Input Form -->
           <div v-if="item.type=='input'" class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"
@@ -101,7 +98,7 @@
       </div>
       <!-- main -->
 
-      <button v-on:click="test()" type="button" class="btn btn-primary">
+      <button v-on:click="save()" type="button" class="btn btn-primary">
         Save
       </button>
 
@@ -111,6 +108,7 @@
     </div>
 
     <script defer src="index.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>

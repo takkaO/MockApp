@@ -1,12 +1,13 @@
 "use strict";
 
-const MyView = {
-	data() {
-		return {
+new Vue({
+	el: '#MyView',
+	data: {
 			selectedValue: "",
 			equipmentList: [],
-			selectedEquipment: ""
-		}
+			selectedEquipment: "",
+
+			searchWindow: null
 	},
 	mounted: async function (){
 		this.equipmentList =  await window.api.loadEquipmentList();
@@ -26,14 +27,18 @@ const MyView = {
 			console.log(this.selectedValue);
 			console.log(this.equipmentList);
 		},
+		save() {
+			swal("未実装", "まだ実装されていない機能です🙄", "warning");
+		},
 		menu_openDB() {
 			console.log("Open Database");
-			window.open();
+			window.api.openSearchDataBaseWindow();
+			// this.searchWindow = window.open("./template/search_window.html");
+			// this.searchWindow.postMessage("I'm parent window");
 		},
 		menu_openTemplate() {
 			console.log("Open Template");
 		}
 	  }
-}
+});
 
-Vue.createApp(MyView).mount("#MyView")

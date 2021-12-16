@@ -33,9 +33,7 @@
       "package.json",
       "package-lock.json"
     ],
-    "extraFiles": [
-      
-    ],
+    "extraFiles": [],
     "win": {
       "target": [
         "nsis"
@@ -50,5 +48,8 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     }
+  },
+  "dependencies": {
+    "sqlite3": "^5.0.2"
   }
 }
